@@ -14,8 +14,7 @@
     Add the following entry to your <code>ox_inventory/data/items.lua</code> file:
   </p>
 
-  <pre>
-  <code>
+  <pre style="display: inline-block; text-align: left; padding: 10px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; max-width: 600px; white-space: pre-wrap;">
 ['hotrodtune'] = {
     label = 'Hotrod Tune',
     weight = 1,
@@ -29,6 +28,5 @@
     },
     consume = 1
 }
-  </code>
   </pre>
 </div>
