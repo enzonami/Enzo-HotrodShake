@@ -1,0 +1,13 @@
+['hotrodtune'] = {
+    label = 'Hotrod Tune',
+    weight = 1,
+    degrade = 100,
+    client = {
+        image = 'hotrodtune.png',
+        export = 'enzo-hotrodshake.applyHotrodTune',
+    },
+    server = {
+        export = 'enzo-hotrodshake.saveHotrodTune',
+    },
+    consume = 1
+}
