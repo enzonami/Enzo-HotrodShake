@@ -7,19 +7,19 @@ Config.ShakeDuration = 1000
 Config.ShakeIntensity = 0.5
 
 -- Toggle to enable/disable job restrictions
-Config.RestrictByJob = true -- Set to false to disable job-based restrictions
+Config.RestrictByJob = true
 
--- Jobs allowed to use the Hotrod Tune
+-- Jobs allowed to use the ShakeTune
 Config.AllowedJobs = {
     ["mechanic"] = true,
-    ["tuner"] = true -- Add more jobs as needed
+    ["tuner"] = true
 }
 
 -- Toggle to enable/disable vehicle model restrictions
-Config.RestrictByVehicle = true -- Set to false to disable vehicle-based restrictions
+Config.RestrictByVehicle = true
 
--- Vehicle models (hashes) allowed to use the Hotrod Tune
+-- Vehicle models (hashes) allowed to use the ShakeTune
 Config.AllowedVehicles = {
-    [GetHashKey("dominator")] = true, -- Example vehicle model
-    [GetHashKey("buffalo")] = true -- Add more vehicle hashes as needed
+    [GetHashKey("dominator")] = true,
+    [GetHashKey("buffalo")] = true
 }

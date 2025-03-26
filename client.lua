@@ -1,16 +1,16 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local wasEngineRunning = false
 
--- Export for Ox Inventory: Applies the Hotrod Tune on the client-side
-exports('applyHotrodTune', function(data)
+-- Export for Ox Inventory: Applies the Shake Tune on the client-side
+exports('applyShakeTune', function(data)
     local playerPed = PlayerPedId()
-    local playerJob = QBCore.Functions.GetPlayerData().job.name -- Retrieve the player's job
+    local playerJob = QBCore.Functions.GetPlayerData().job.name
     local vehicle = GetVehiclePedIsIn(playerPed, false)
 
     -- Validate vehicle
     if not DoesEntityExist(vehicle) then
         TriggerEvent('ox_lib:notify', {
-            title = 'Hotrod Tune',
+            title = 'Shake Tune',
             description = 'You are not in a valid vehicle!',
             type = 'error'
         })
@@ -20,7 +20,7 @@ exports('applyHotrodTune', function(data)
     -- Check job restrictions
     if Config.RestrictByJob and not Config.AllowedJobs[playerJob] then
         TriggerEvent('ox_lib:notify', {
-            title = 'Hotrod Tune',
+            title = 'Shake Tune',
             description = 'Your job does not allow you to use this item!',
             type = 'error'
         })
@@ -31,8 +31,8 @@ exports('applyHotrodTune', function(data)
     local model = GetEntityModel(vehicle)
     if Config.RestrictByVehicle and not Config.AllowedVehicles[model] then
         TriggerEvent('ox_lib:notify', {
-            title = 'Hotrod Tune',
-            description = 'This vehicle is not eligible for the Hotrod Tune!',
+            title = 'Shake Tune',
+            description = 'This vehicle is not eligible for the ShakeTune!',
             type = 'error'
         })
         return false
@@ -42,8 +42,8 @@ exports('applyHotrodTune', function(data)
     local state = Entity(vehicle).state
     if state.isTuned then
         TriggerEvent('ox_lib:notify', {
-            title = 'Hotrod Tune',
-            description = 'This vehicle already has the Hotrod Tune!',
+            title = 'Shake Tune',
+            description = 'This vehicle already has the ShakeTune!',
             type = 'error'
         })
         return false
@@ -51,15 +51,15 @@ exports('applyHotrodTune', function(data)
 
     -- Display a progress bar
     local completed = lib.progressBar({
-        duration = 5000, -- 5 seconds
-        label = 'Applying Hotrod Tune...',
+        duration = 5000,
+        label = 'Applying Shake Tune...',
         useWhileDead = false,
         canCancel = true
     })
 
     if not completed then
         TriggerEvent('ox_lib:notify', {
-            title = 'Hotrod Tune',
+            title = 'Shake Tune',
             description = 'Tune application canceled!',
             type = 'error'
         })
@@ -70,13 +70,13 @@ exports('applyHotrodTune', function(data)
     local plate = data.metadata and data.metadata.plate or GetVehicleNumberPlateText(vehicle)
 
     -- Trigger the server to save the tune
-    TriggerServerEvent('enzo-hotrodshake:saveHotrodTune', plate)
+    TriggerServerEvent('xVis_Shake_Tune:saveShakeTune', plate)
 
     return true
 end)
 
--- Event to trigger the hotrod effect
-RegisterNetEvent('enzo-hotrodshake:triggerHotrodEffect', function()
+-- Event to trigger the shaketune effect
+RegisterNetEvent('xVis_Shake_Tune:triggerShakeTuneEffect', function()
     ShakeGameplayCam("SKY_DIVING_SHAKE", Config.ShakeIntensity)
     Wait(Config.ShakeDuration)
     StopGameplayCamShaking(true)
@@ -93,11 +93,11 @@ lib.onCache('vehicle', function(vehicle)
                 wasEngineRunning = GetIsVehicleEngineRunning(vehicle)
 
                 while IsPedInAnyVehicle(PlayerPedId(), false) do
-                    Wait(500) -- Check every 250ms
+                    Wait(500)
                     local isEngineRunning = GetIsVehicleEngineRunning(vehicle)
 
                     if isEngineRunning and not wasEngineRunning then
-                        TriggerEvent('enzo-hotrodshake:triggerHotrodEffect')
+                        TriggerEvent('xVis_Shake_Tune:triggerShakeTuneEffect')
                         wasEngineRunning = true
                     elseif not isEngineRunning then
                         wasEngineRunning = false

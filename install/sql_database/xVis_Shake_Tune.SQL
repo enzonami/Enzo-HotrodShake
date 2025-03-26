@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS `xVis_Shake_Tune` (
+    `plate` VARCHAR(8) NOT NULL PRIMARY KEY
+);

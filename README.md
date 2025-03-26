@@ -15,18 +15,18 @@
   </p>
 
   <pre style="display: inline-block; text-align: left; padding: 10px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; max-width: 600px; white-space: pre-wrap;">
-['hotrodtune'] = {
-    label = 'Hotrod Tune',
+['shaketune'] = {
+    label = 'ShakeTune',
     weight = 1,
     degrade = 100,
     client = {
-        image = 'hotrodtune.png',
-        export = 'enzo-hotrodshake.applyHotrodTune',
+        image = 'shaketune.png',
+        export = 'xVis_Shake_Tune.applyShakeTune',
     },
     server = {
-        export = 'enzo-hotrodshake.saveHotrodTune',
+        export = 'xVis_Shake_Tune.saveShakeTune',
     },
     consume = 1
-}
+},
   </pre>
 </div>
