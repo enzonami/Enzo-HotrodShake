@@ -1,13 +1,13 @@
-['hotrodtune'] = {
-    label = 'Hotrod Tune',
+['shaketune'] = {
+    label = 'Shake Tune',
     weight = 1,
     degrade = 100,
     client = {
-        image = 'hotrodtune.png',
-        export = 'enzo-hotrodshake.applyHotrodTune',
+        image = 'shaketune.png',
+        export = 'xVis_Shake_Tune.applyShakeTune',
     },
     server = {
-        export = 'enzo-hotrodshake.saveHotrodTune',
+        export = 'xVis_Shake_Tune.saveShakeTune',
     },
     consume = 1
-}
+},
